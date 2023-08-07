@@ -21,7 +21,7 @@ terraform apply build-plan
 
 ## Terraform Destroy Plan Genration
 ```
-terraform plan -out destroy-plan
+terraform plan -destroy -out destroy-plan
 ```
 
 ## Apply Destroy Plan 
