@@ -26,5 +26,5 @@ terraform plan -out destroy-plan
 
 ## Apply Destroy Plan 
 ```
-terraform apply destoy-plan
+terraform apply destroy-plan
 ```
