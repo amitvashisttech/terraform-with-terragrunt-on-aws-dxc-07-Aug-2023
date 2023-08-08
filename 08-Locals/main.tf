@@ -19,5 +19,5 @@ resource "aws_instance" "back" {
 
 
   tags = local.backend_tags
-  
+
 }
