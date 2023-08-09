@@ -29,9 +29,9 @@ output "aws_availability_zones_details_2" {
   description = "Display the Public IP of Ec2 Instance"
 }
 
-/*
-output "aws_availability_zones_details_2" {
-  value       = join(",", tolist([data.aws_availability_zones.zone_east.names, data.aws_availability_zones.zone_west.names]))
+
+output "aws_availability_zones_details_3" {
+  value       = concat(data.aws_availability_zones.zone_east.names, data.aws_availability_zones.zone_west.names)
   description = "Display the Public IP of Ec2 Instance"
 }
-*/
+
