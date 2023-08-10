@@ -1,0 +1,52 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_instance.back_east (expand)" [label = "aws_instance.back_east", shape = "box"]
+		"[root] aws_instance.back_west (expand)" [label = "aws_instance.back_west", shape = "box"]
+		"[root] aws_instance.front_east (expand)" [label = "aws_instance.front_east", shape = "box"]
+		"[root] aws_instance.front_west (expand)" [label = "aws_instance.front_west", shape = "box"]
+		"[root] data.aws_ami.myami_east (expand)" [label = "data.aws_ami.myami_east", shape = "box"]
+		"[root] data.aws_ami.myami_west (expand)" [label = "data.aws_ami.myami_west", shape = "box"]
+		"[root] data.aws_availability_zones.zone_east (expand)" [label = "data.aws_availability_zones.zone_east", shape = "box"]
+		"[root] data.aws_availability_zones.zone_west (expand)" [label = "data.aws_availability_zones.zone_west", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"].myprovider2" [label = "provider[\"registry.terraform.io/hashicorp/aws\"].myprovider2", shape = "diamond"]
+		"[root] var.ec2_instance_count" [label = "var.ec2_instance_count", shape = "note"]
+		"[root] var.ec2_instance_name" [label = "var.ec2_instance_name", shape = "note"]
+		"[root] var.ec2_instance_type" [label = "var.ec2_instance_type", shape = "note"]
+		"[root] var.multi-region-deployment" [label = "var.multi-region-deployment", shape = "note"]
+		"[root] var.project-name" [label = "var.project-name", shape = "note"]
+		"[root] aws_instance.back_east (expand)" -> "[root] data.aws_ami.myami_east (expand)"
+		"[root] aws_instance.back_east (expand)" -> "[root] data.aws_availability_zones.zone_east (expand)"
+		"[root] aws_instance.back_east (expand)" -> "[root] local.backend_east_name (expand)"
+		"[root] aws_instance.back_east (expand)" -> "[root] var.ec2_instance_count"
+		"[root] aws_instance.back_east (expand)" -> "[root] var.ec2_instance_type"
+		"[root] aws_instance.back_west (expand)" -> "[root] data.aws_ami.myami_west (expand)"
+		"[root] aws_instance.back_west (expand)" -> "[root] data.aws_availability_zones.zone_west (expand)"
+		"[root] aws_instance.back_west (expand)" -> "[root] local.backend_west_name (expand)"
+		"[root] aws_instance.back_west (expand)" -> "[root] var.ec2_instance_count"
+		"[root] aws_instance.back_west (expand)" -> "[root] var.ec2_instance_type"
+		"[root] aws_instance.back_west (expand)" -> "[root] var.multi-region-deployment"
+		"[root] aws_instance.front_east (expand)" -> "[root] aws_instance.back_east (expand)"
+		"[root] aws_instance.front_east (expand)" -> "[root] local.frontend_east_name (expand)"
+		"[root] aws_instance.front_west (expand)" -> "[root] aws_instance.back_west (expand)"
+		"[root] aws_instance.front_west (expand)" -> "[root] local.frontend_west_name (expand)"
+		"[root] data.aws_ami.myami_east (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_ami.myami_west (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"].myprovider2"
+		"[root] data.aws_availability_zones.zone_east (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_availability_zones.zone_west (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"].myprovider2"
+		"[root] local.backend_east_name (expand)" -> "[root] var.project-name"
+		"[root] local.backend_west_name (expand)" -> "[root] var.project-name"
+		"[root] local.frontend_east_name (expand)" -> "[root] var.project-name"
+		"[root] local.frontend_west_name (expand)" -> "[root] var.project-name"
+		"[root] output.public_ips_east (expand)" -> "[root] aws_instance.front_east (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.front_east (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"].myprovider2 (close)" -> "[root] aws_instance.front_west (expand)"
+		"[root] root" -> "[root] output.public_ips_east (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"].myprovider2 (close)"
+		"[root] root" -> "[root] var.ec2_instance_name"
+	}
+}
+
