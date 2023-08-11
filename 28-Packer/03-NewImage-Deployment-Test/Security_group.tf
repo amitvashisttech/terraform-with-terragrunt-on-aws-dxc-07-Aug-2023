@@ -24,6 +24,6 @@ dynamic "egress" {
 }
 
   tags = {
-    Name  = "demo-tf-sg_demo"
+    Name  = "demo-tf-sg"
   }
 }
